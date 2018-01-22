@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="width 400px; text-center">
+        @if (ViewBag.Erro != null)
+        {
+        <div class="alert alert-danger">
+            <h3>@ViewBag.Erro</h3>
+        </div>
+        }
+        <h2>Entre com seu CPF para prosseguir:</h2>
+        <div style="width: 280px; margin: 0 auto;">
+            <input class="form-control" name="cpf" id="cpf"/>
+            <button class="btn btn-block btn-info">Acessar</button>
+        </div>
+    </div>
+}

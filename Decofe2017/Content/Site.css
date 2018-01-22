@@ -22,3 +22,10 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.radio-nota {
+    display: block;
+    float: left;
+    width: 9%;
+    text-align: center;
+}

@@ -1,0 +1,327 @@
+﻿@model Decofe2017.ViewModels.AvaliacaoViewModel
+
+@{
+    ViewBag.Title = "Avaliar";    
+}
+
+@if (TempData["Sucesso"] != null)
+{
+    <div class="alert alert-success text-center">
+        <h3>@TempData["Sucesso"]</h3>
+    </div>
+}
+
+<div>
+    <h4>Avaliar Trabalho</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Trabalho.AvaliadorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trabalho.AvaliadorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trabalho.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trabalho.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trabalho.Cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trabalho.Cpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trabalho.CodigoTrabalho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trabalho.CodigoTrabalho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trabalho.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trabalho.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trabalho.DataApresentacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trabalho.DataApresentacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trabalho.Ausente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trabalho.Ausente)
+            <button class="btn btn-info" onclick="window.location.href = '@Url.Action("AusentarTrabalho", "Home", new { trabalhoId = Model.Trabalho.TrabalhoId, avaliadorId = Model.Avaliacao.AvaliadorId, ausente = !Model.Trabalho.Ausente })'">@(Model.Trabalho.Ausente ? "Tornar Presente" : "Tornar Ausente")</button>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trabalho.DataEnvio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trabalho.DataEnvio)
+        </dd>
+
+    </dl>
+    <hr/>
+    <div class="col-md-2">
+        Painel Auto-explicativo
+</div>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(x => x.Avaliacao.AvaliadorId)
+        @Html.HiddenFor(x => x.Avaliacao.AvaliacaoId)
+        @Html.HiddenFor(x => x.Avaliacao.TrabalhoId)
+        <div class="col-md-10">
+            <div class="alert alert-info" style="padding-top: 0 !important;">
+                <br/>
+                <div style="padding: 5px 20px; border-bottom: 1px solid #ccc;">
+                    <label class="radio-nota"> 
+                        0 <br/> @Html.RadioButtonFor(x => x.Avaliacao.PainelAutoexplicativo, 0)
+                    </label>
+                    <label class="radio-nota">
+                        1 <br/> @Html.RadioButtonFor(x => x.Avaliacao.PainelAutoexplicativo, 1)
+                    </label>
+                    <label class="radio-nota">
+                        2 <br/> @Html.RadioButtonFor(x => x.Avaliacao.PainelAutoexplicativo, 2)
+                    </label>
+                    <label class="radio-nota">
+                        3 <br/> @Html.RadioButtonFor(x => x.Avaliacao.PainelAutoexplicativo, 3)
+                    </label>
+                    <label class="radio-nota">
+                        4 <br/> @Html.RadioButtonFor(x => x.Avaliacao.PainelAutoexplicativo, 4)
+                    </label>
+                    <label class="radio-nota">
+                        5 <br/> @Html.RadioButtonFor(x => x.Avaliacao.PainelAutoexplicativo, 5)
+                    </label>
+                    <label class="radio-nota">
+                        6 <br/> @Html.RadioButtonFor(x => x.Avaliacao.PainelAutoexplicativo, 6)
+                    </label>
+                    <label class="radio-nota">
+                        7 <br/> @Html.RadioButtonFor(x => x.Avaliacao.PainelAutoexplicativo, 7)
+                    </label>
+                    <label class="radio-nota">
+                        8 <br/> @Html.RadioButtonFor(x => x.Avaliacao.PainelAutoexplicativo, 8)
+                    </label>
+                    <label class="radio-nota">
+                        9 <br/> @Html.RadioButtonFor(x => x.Avaliacao.PainelAutoexplicativo, 9)
+                    </label>
+                    <label class="radio-nota">
+                        10 <br/> @Html.RadioButtonFor(x => x.Avaliacao.PainelAutoexplicativo, 10)
+                    </label>
+                    <hr/>
+
+                </div>
+                @Html.ValidationMessageFor(x => x.Avaliacao.PainelAutoexplicativo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-2">
+            Proposição
+        </div>
+        <div class="col-md-10">
+            <div class="alert alert-info" style="padding-top: 0 !important;">
+                <br/>
+                <div style="padding: 5px 20px; border-bottom: 1px solid #ccc;">
+                    <label class="radio-nota">
+                        0 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Proposicao, 0)
+                    </label>
+                    <label class="radio-nota">
+                        1 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Proposicao, 1)
+                    </label>
+                    <label class="radio-nota">
+                        2 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Proposicao, 2)
+                    </label>
+                    <label class="radio-nota">
+                        3 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Proposicao, 3)
+                    </label>
+                    <label class="radio-nota">
+                        4 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Proposicao, 4)
+                    </label>
+                    <label class="radio-nota">
+                        5 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Proposicao, 5)
+                    </label>
+                    <label class="radio-nota">
+                        6 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Proposicao, 6)
+                    </label>
+                    <label class="radio-nota">
+                        7 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Proposicao, 7)
+                    </label>
+                    <label class="radio-nota">
+                        8 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Proposicao, 8)
+                    </label>
+                    <label class="radio-nota">
+                        9 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Proposicao, 9)
+                    </label>
+                    <label class="radio-nota">
+                        10 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Proposicao, 10)
+                    </label>
+                    <hr/>
+
+                </div>
+                @Html.ValidationMessageFor(x => x.Avaliacao.Proposicao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-2">
+            Coêrencia
+        </div>
+        <div class="col-md-10">
+            <div class="alert alert-info" style="padding-top: 0 !important;">
+                <br/>
+                <div style="padding: 5px 20px; border-bottom: 1px solid #ccc;">
+                    <label class="radio-nota">
+                        0 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Coerencia, 0)
+                    </label>
+                    <label class="radio-nota">
+                        1 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Coerencia, 1)
+                    </label>
+                    <label class="radio-nota">
+                        2 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Coerencia, 2)
+                    </label>
+                    <label class="radio-nota">
+                        3 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Coerencia, 3)
+                    </label>
+                    <label class="radio-nota">
+                        4 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Coerencia, 4)
+                    </label>
+                    <label class="radio-nota">
+                        5 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Coerencia, 5)
+                    </label>
+                    <label class="radio-nota">
+                        6 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Coerencia, 6)
+                    </label>
+                    <label class="radio-nota">
+                        7 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Coerencia, 7)
+                    </label>
+                    <label class="radio-nota">
+                        8 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Coerencia, 8)
+                    </label>
+                    <label class="radio-nota">
+                        9 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Coerencia, 9)
+                    </label>
+                    <label class="radio-nota">
+                        10 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Coerencia, 10)
+                    </label>
+                    <hr/>
+
+                </div>
+                @Html.ValidationMessageFor(x => x.Avaliacao.Coerencia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-2">
+            Contribuição
+        </div>
+        <div class="col-md-10">
+            <div class="alert alert-info" style="padding-top: 0 !important;">
+                <br/>
+                <div style="padding: 5px 20px; border-bottom: 1px solid #ccc;">
+                    <label class="radio-nota">
+                        0 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Contribuicao, 0)
+                    </label>
+                    <label class="radio-nota">
+                        1 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Contribuicao, 1)
+                    </label>
+                    <label class="radio-nota">
+                        2 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Contribuicao, 2)
+                    </label>
+                    <label class="radio-nota">
+                        3 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Contribuicao, 3)
+                    </label>
+                    <label class="radio-nota">
+                        4 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Contribuicao, 4)
+                    </label>
+                    <label class="radio-nota">
+                        5 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Contribuicao, 5)
+                    </label>
+                    <label class="radio-nota">
+                        6 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Contribuicao, 6)
+                    </label>
+                    <label class="radio-nota">
+                        7 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Contribuicao, 7)
+                    </label>
+                    <label class="radio-nota">
+                        8 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Contribuicao, 8)
+                    </label>
+                    <label class="radio-nota">
+                        9 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Contribuicao, 9)
+                    </label>
+                    <label class="radio-nota">
+                        10 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Contribuicao, 10)
+                    </label>
+                    <hr/>
+
+                </div>
+                @Html.ValidationMessageFor(x => x.Avaliacao.Contribuicao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-2">
+            Conjunto
+        </div>
+        <div class="col-md-10">
+            <div class="alert alert-info" style="padding-top: 0 !important;">
+                <br/>
+                <div style="padding: 5px 20px; border-bottom: 1px solid #ccc;">
+                    <label class="radio-nota">
+                        0 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Conjunto, 0)
+                    </label>
+                    <label class="radio-nota">
+                        1 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Conjunto, 1)
+                    </label>
+                    <label class="radio-nota">
+                        2 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Conjunto, 2)
+                    </label>
+                    <label class="radio-nota">
+                        3 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Conjunto, 3)
+                    </label>
+                    <label class="radio-nota">
+                        4 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Conjunto, 4)
+                    </label>
+                    <label class="radio-nota">
+                        5 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Conjunto, 5)
+                    </label>
+                    <label class="radio-nota">
+                        6 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Conjunto, 6)
+                    </label>
+                    <label class="radio-nota">
+                        7 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Conjunto, 7)
+                    </label>
+                    <label class="radio-nota">
+                        8 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Conjunto, 8)
+                    </label>
+                    <label class="radio-nota">
+                        9 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Conjunto, 9)
+                    </label>
+                    <label class="radio-nota">
+                        10 <br /> @Html.RadioButtonFor(x => x.Avaliacao.Conjunto, 10)
+                    </label>
+                    <hr/>
+
+                </div>
+                @Html.ValidationMessageFor(x => x.Avaliacao.Conjunto)
+            </div>
+        </div>
+        <div class="row">
+            <button style="width: 60px;margin: 0 auto; display: block;" class="btn btn-info">Salvar</button>
+        </div>
+    }
+</div>
+<p> 
+    @Html.ActionLink("Voltar", "Index", new { avaliadorId = Model.Avaliacao.AvaliadorId})
+</p>
